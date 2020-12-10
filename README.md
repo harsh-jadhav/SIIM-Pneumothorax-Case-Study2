@@ -4,12 +4,13 @@
 - [Dataset](#dataset)
 - [Data Description](#data-description)
 - [Project Goal](#project-goal)
-- [Architecture](#architecture)
-- [Implementation Details](#implementation-details)
+- [Architectures used](#architectures-used)
+- [Libraries used](#libraries-used)
+- [Platform used](#platform-used)
 - [Results](#results)
 - [Directory Tree Structure](#directory-tree-structure)
 - [Blog](#blog)
-- [References / Useful Resources](#references--useful-resources)
+- [Web Application Demo Video](#web-application-demo-video)
 
 ## Overview:
 Pneumothorax is basically a combination of two words Pneumo(air) and Thorax(chest). Pneumothorax is also known as lung collapse. Pneumothorax is caused by abnormal collection of air between the parietal and visceral pleura i. e. pleural space between lungs and chest wall. Pneumothorax is a relatively common respiratory disease that can occur in a wide range of patients and in various clinical settings.
@@ -41,13 +42,13 @@ We have a dataset in the form of images, and our task is to predict the mask of 
 ## Libraries used: 
 Tensorflow, Keras, Flask
 
-## Platform:
+## Platform used:
 Google Collab
 
 ## Results:
 ![Segmented Images](https://miro.medium.com/max/2400/1*3iGzllBiluoOAjlXaoKEhw.png)
 
-## Directory Tree Structure
+## Directory Tree Structure:
 ```
 ├── Deployable Code
       ├── templates
@@ -75,7 +76,7 @@ Google Collab
 - Weighted_Metrics_2Block_DU_first_channel_harshjadhav100_New_Model_PneumoThorax.ipynb: It contains weighted metric that is used to measure the model performance.
 - Final_pipeline_Pneumothorax.ipynb: It contains the simple pipeline for inference.
 
-## Blog
+## Blog:
 An article about this project: 
 -->https://harshjadhav100.medium.com/siim-acr-pneumothorax-segmentation-d92af3086b51<--
 
