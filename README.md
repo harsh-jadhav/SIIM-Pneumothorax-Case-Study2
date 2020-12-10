@@ -23,7 +23,9 @@ This problem belong to one of the competitions held on kaggle, which can be foun
 https://www.kaggle.com/c/siim-acr-pneumothorax-segmentation/
 
 The data is comprised of images in DICOM format and annotations in the form of image IDs and run-length-encoded (RLE) masks. Some of the images contain instances of pneumothorax (collapsed lung), which are indicated by encoded binary masks in the annotations. Some training images have multiple annotations.
+
 ![Sample Filled Mask](https://miro.medium.com/max/700/1*A9EYEB6O2mE3IKxib3sUBA.png)
+
 images without pneumothorax have a mask value of -1.
 ![Sample Empty Mask](https://miro.medium.com/max/700/1*0rFVcuAqVxVL_bvPPyA8BA.png)
 
