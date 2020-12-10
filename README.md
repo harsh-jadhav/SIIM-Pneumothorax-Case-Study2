@@ -46,6 +46,7 @@ Tensorflow, Keras, Flask
 Google Collab
 
 ## Results:
+Model Weights: https://drive.google.com/file/d/1-1AmPmdIg-lb11-pVpxx0Hl9IxqVDVdB/view?usp=sharing
 ![Segmented Images](https://miro.medium.com/max/2400/1*3iGzllBiluoOAjlXaoKEhw.png)
 
 ## Directory Tree Structure:
