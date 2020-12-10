@@ -1,5 +1,5 @@
-# Jigsaw Unintended Bias in Toxicity Classification
-![header image](https://miro.medium.com/max/788/1*U6grgS7jsycYNrKeF9cQKQ.jpeg)
+# SIIM-ACR Pneumothorax Segmentation
+![header image](https://miro.medium.com/max/700/1*IHzf11afYwRieoJbJgBH-g.jpeg)
 - [Overview](#overview)
 - [Dataset](#dataset)
 - [Data Description](#data-description)
@@ -11,73 +11,73 @@
 - [Blog](#blog)
 - [References / Useful Resources](#references--useful-resources)
 
-## Overview
-The invention of the World Wide Web connected the world in a way that was not possible before. It made much easier for people to get information, share and communicate. It allowed people to share their work and thoughts through social networking sites, blogs, video sharing, etc.
+## Overview:
+Pneumothorax is basically a combination of two words Pneumo(air) and Thorax(chest). Pneumothorax is also known as lung collapse. Pneumothorax is caused by abnormal collection of air between the parietal and visceral pleura i. e. pleural space between lungs and chest wall. Pneumothorax is a relatively common respiratory disease that can occur in a wide range of patients and in various clinical settings.
 
-But while the internet and its offshoot technologies have improved society and daily life in many ways, they have also been an unmitigated disaster for the way people communicate online. It has become increasingly common for people to participate in online bullying, abuse and spreading hate. While freedom of speech is important, creating an inclusive platform for meaningful discussion is also necessary.
+Diagnosing a pneumothorax in a chest radiography image is not difficult for an experienced physician or radiologist, but in some cases, it can easily be missed. Usually it is diagnosed by a radiologist on a chest x-ray, and can sometimes be very difficult to confirm as discussed above. An accurate AI algorithm to detect pneumothorax would be useful in a lot of clinical scenarios. AI could be used to triage chest radiographs for priority interpretation, or to provide a more confident diagnosis for non-radiologists. In other words, a machine learning-based pneumothorax diagnosis technique from the chest X-ray image is required to assist a physician to diagnose a pneumothorax.
 
-This is a implementation of one such system that can accomplish the task of tackling the menace of online bullying, and hate.
+## Dataset:
+This problem belong to one of the competitions held on kaggle, which can be found on following link:
 
-## Dataset
-The dataset is taken from a competition hosted on Kaggle by The Conversation AI team (research initiated by Jigsaw and Google).
+https://www.kaggle.com/c/siim-acr-pneumothorax-segmentation/
 
-Source: https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/data
+The data is comprised of images in DICOM format and annotations in the form of image IDs and run-length-encoded (RLE) masks. Some of the images contain instances of pneumothorax (collapsed lung), which are indicated by encoded binary masks in the annotations. Some training images have multiple annotations.
+![Sample Filled Mask](https://miro.medium.com/max/700/1*A9EYEB6O2mE3IKxib3sUBA.png)
+images without pneumothorax have a mask value of -1.
+![Sample Empty Mask](https://miro.medium.com/max/700/1*0rFVcuAqVxVL_bvPPyA8BA.png)
 
-## Data Description
-In the data supplied for this competition, the text of the individual comment is found in the `comment_text` column. Each comment in Train has a toxicity label (`target`), and models should predict the `target` toxicity for the Test data.
+## Project Goal:
 
-The data also has several additional toxicity subtype attributes. Models do not need to predict these attributes for the competition, they are included as an additional avenue for research. Subtype attributes are: `severe_toxicity`, `obscene`, `threat`, `insult`, `identity_attack`, `sexual_explicit`.
+We have a dataset in the form of images, and our task is to predict the mask of pneumothorax in the X-ray image. This problem is of Semantic Image Segmentation problem. This model will assist a physician to diagnose a Pneumothorax.
 
-Additionally, a subset of comments have been labelled with a variety of identity attributes, representing the identities that are mentioned in the comment. Out of 24 such atrributes provided in the dataset, we consider only the following attributes: `male`, `female`, `homosexual_gay_or_lesbian`, `christian`, `jewish`, `muslim`, `black`, `white` and `psychiatric_or_mental_illness`.
 
-## Project Goal
+## Architectures used:
+### U-Net: https://arxiv.org/abs/1505.04597
+![U-Net](https://miro.medium.com/max/700/1*lvXoKMHoPJMKpKK7keZMEA.png)
 
-The goal of the project is to build a model that can classify the toxicity\* of a comment, ie we have to predict if a comment is toxic or non-toxic.
+### Double-UNet: https://arxiv.org/pdf/2006.04868.pdf
+![Double-UNet](https://miro.medium.com/max/700/1*iVi5typWa2Q2rv92oI9mQQ.png)
 
-*\* Toxic comments are the comments which are offensive and sometimes can make some people leave the discussion (on public forums).*
+## Libraries used: 
+Tensorflow, Keras, Flask
 
-## Architecture
-![model arch](https://miro.medium.com/max/574/1*52az766UsePpIFzxsXqA1Q.png)
+## Platform:
+Google Collab
 
-## Implementation Details
-- We use predefined word embeddings, viz [Crawl](https://dl.fbaipublicfiles.com/fasttext/vectors-english/crawl-300d-2M.vec.zip) and [Glove](http://nlp.stanford.edu/data/glove.840B.300d.zip) to encode the text sequences.
-- We use bi-directional LSTM in the model. **Why bi-directional?** Because they can capture information from both past and future time steps.
-- The LSTM layers are coupled with Attention (Luong's) layers. **Why attention?** To select the most representative word in a sentence.
-- We make two predictions with our model: target and aux_target. **Why?** Because, the data also has several additional toxicity subtype attributes (severe_toxicity, obscene, threat, insult, identity_attack) that are highly correlated to the target, we also use the toxicity probabilities of these auxiliary targets.
-- As such we use two different loss functions: one is used to penalize the weighted target and other is used to penalize the aux_target.
-- The model is compiled with `Adam` optimizer
-- We use `LearningRateScheduler` to schedule a different learning rate at every epoch.
-- We use batch size of 256.
-- We train two models, each for 4 epochs. It took 5–6 hours to complete the training process with the free computing resources provided by Google Colab.
-
-## Results
-<table>
-  <tr>
-    <th>AUC Score</th>
-    <th>Kaggle Private LB</th>
-  </tr>
-  <tr>
-    <td>0.93623</td>
-    <td>629/2633</td>
-  </tr>
- </table>
+## Results:
+![Segmented Images](https://miro.medium.com/max/2400/1*3iGzllBiluoOAjlXaoKEhw.png)
 
 ## Directory Tree Structure
 ```
-├── REAMDE.md
-├── Jigsaw 0 About Data.ipynb
-├── Jigsaw 1 EDA.ipynb
-├── Jigsaw 2 Metric.ipynb
-└── Jigsaw 3 Models_ LSTM w Luong Attention.ipynb
+├── Deployable Code
+      ├── templates
+      ├── uploads
+      ├── .md
+      ├── Flask_Deployment.ipynb
+      ├── inference.py
+      ├── model.py
+      ├── sample_iusage.ipynb
+      ├── utils.py
+├── 2Block_DU_first_channel_harshjadhav100_New_Model_PneumoThorax.ipynb
+├── 2Block_DU_first_channel_harshjadhav100_New_Model_PneumoThorax.pdf
+├── Final_pipeline_Pneumothorax.ipynb
+└── Final_pipeline_Pneumothorax.pdf
+└── README.md
+└── Weighted_Metrics_2Block_DU_first_channel_harshjadhav100_New_Model_PneumoThorax.ipynb
+└── Weighted_Metrics_2Block_DU_first_channel_harshjadhav100_New_Model_PneumoThorax.pdf
+└── harshjadhav100_Model_PneumoThorax.ipynb
+└── harshjadhav100_Model_PneumoThorax.pdf
 ```
-- Jigsaw 0 About Data.ipynb: It contains info about the data and the business problem statements.
-- Jigsaw 1 EDA.ipynb: It contains EDA on the data set.
-- Jigsaw 2 Metric.ipynb: It contains details about the metric that is used to measure the model performance.
-- Jigsaw 3 Models_ LSTM w Luong Attention.ipynb: It contains the implementation of the model. Luong's Attention mechanism is used in the model.
+
+- Deployable Code: This folder contains all the files and code to deploy the model using Flask on Google Collab.
+- harshjadhav100_Model_PneumoThorax.ipynb: This contains EDA and Vanilla Unet Implementation.
+- 2Block_DU_first_channel_harshjadhav100_New_Model_PneumoThorax.ipynb: It contains Double Unet Implementation.
+- Weighted_Metrics_2Block_DU_first_channel_harshjadhav100_New_Model_PneumoThorax.ipynb: It contains weighted metric that is used to measure the model performance.
+- Final_pipeline_Pneumothorax.ipynb: It contains the simple pipeline for inference.
 
 ## Blog
 An article about this project: 
--->link to blog<--
+-->https://harshjadhav100.medium.com/siim-acr-pneumothorax-segmentation-d92af3086b51<--
 
-## References / Useful Resources
-[1] https://kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification
+## Web Application Demo Video:
+https://youtu.be/XY9s1Kopuvs
