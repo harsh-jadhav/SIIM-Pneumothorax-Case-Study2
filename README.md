@@ -86,8 +86,7 @@ An article about this project:
 ## Web Application Demo Video:
 
 Click Below Image For Demo
-            |
-            V
+            
 
 [![CLICK HERE FOR DEMO](https://img.youtube.com/vi/XY9s1Kopuvs/sddefault.jpg)](https://www.youtube.com/watch?v=XY9s1Kopuvs)
 
