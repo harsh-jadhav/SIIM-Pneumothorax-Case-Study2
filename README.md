@@ -84,4 +84,7 @@ An article about this project:
 -->https://harshjadhav100.medium.com/siim-acr-pneumothorax-segmentation-d92af3086b51<--
 
 ## Web Application Demo Video:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XY9s1Kopuvs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 https://youtu.be/XY9s1Kopuvs
