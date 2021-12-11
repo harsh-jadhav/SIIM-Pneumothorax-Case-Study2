@@ -85,9 +85,7 @@ An article about this project:
 
 ## Web Application Demo Video:
 
-It's not possible to embed videos directly, but you can put an image which links to a YouTube video:
-
-[![CLICK HERE FOR DEMO](https://img.youtube.com/vi/XY9s1Kopuvs/sddefault.jpg)](https://www.youtube.com/watch?v=XY9s1Kopuvs
+[![CLICK HERE FOR DEMO](https://img.youtube.com/vi/XY9s1Kopuvs/sddefault.jpg)](https://www.youtube.com/watch?v=XY9s1Kopuvs)
 
 
 
