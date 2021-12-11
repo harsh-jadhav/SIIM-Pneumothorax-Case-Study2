@@ -85,6 +85,9 @@ An article about this project:
 
 ## Web Application Demo Video:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/XY9s1Kopuvs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+It's not possible to embed videos directly, but you can put an image which links to a YouTube video:
 
-https://youtu.be/XY9s1Kopuvs
+[![CLICK HERE FOR DEMO](https://img.youtube.com/vi/XY9s1Kopuvs/sddefault.jpg)](https://www.youtube.com/watch?v=XY9s1Kopuvs
+
+
+
